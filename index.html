@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"> </script>
+    <script src="https://cdn.plot.ly/plotly-2.20.0.min.js" charset="utf-8"></script>
+</head>
+
+<body>
+
+    <script>
+
+        const xs = tf.tensor([0,1,2,3,4]);
+        const ys = xf.mul(1.2).add(5);
+
+        const model = tf.sequencial();
+        model.add(tf.layers.dense({unitis:1,inputShape:[1]}));
+        model.compile({loss: 'meanSquaredError', optimizer: 'sgd'});
+        
+        model.fit(xs,ys,{epochs:500}).then(() =>{
+            myFunction();
+        });
+
+        myFunction(){
+            const xMax = 10;
+            const xArr = [];
+            const yArr = [];
+
+            for (let x =0; x< xMacx; x++){
+                let result = model.predit(tf.tensor([Number(x)]));
+                result.data().then(y => {
+                    xArr.push(x);
+                    yArr.push(Number(y));
+                    if(x == xMax){plot(xArr,yArr)};
+                });
+            }
+        document.getElementById('message').style.display='none';
+        };
+
+        function plot(xArr, yArr){
+            const data=[{x:xArr,y:yArr,model:"markers",type:"sccatter"}];
+            
+            const layout = {xaxis:{range:[0,100]}, yaxis:{range:[0,20]}};
+            
+
+            Plotly.newPlot("myPlot",data,layout);
+        };
+
+
+    </script>
+
+</body>
+
+</html>
