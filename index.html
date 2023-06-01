@@ -25,12 +25,13 @@
             myFunction();
         });
 
-        myFunction(){
+        function myFunction(){
+            
             const xMax = 10;
             const xArr = [];
             const yArr = [];
 
-            for (let x =0; x< xMacx; x++){
+            for (let x = 0; x < xMax; x++){
                 let result = model.predit(tf.tensor([Number(x)]));
                 result.data().then(y => {
                     xArr.push(x);
@@ -39,7 +40,7 @@
                 });
             }
         document.getElementById('message').style.display='none';
-        };
+        }
 
         function plot(xArr, yArr){
             const data=[{x:xArr,y:yArr,model:"markers",type:"sccatter"}];
@@ -49,7 +50,8 @@
 
             Plotly.newPlot("myPlot",data,layout);
         };
-
+        
+    
 
     </script>
 
